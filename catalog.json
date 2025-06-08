@@ -3,6 +3,7 @@
         "path": "scenarios/ScribbleNumber",
         "handle": "ScribbleNumber.py",
         "type": 1,
-        "is_local": true
+        "is_local": true,
+        "params": {"foo": "bar"}
     }
 }
