@@ -2,7 +2,7 @@ import random
 import argparse
 from PIL import Image, ImageDraw, ImageFont
 
-def create_handwritten_number(number, image_size=(64, 64), font_name=None, font_size=24, draw_offset_fixed=(0,0), draw_offset_rand=(0,0), draw_rotate_rand=0):
+def create_handwritten_number(number, image_size=(64, 64), font_name=None, font_size=20, draw_offset_fixed=(0,0), draw_offset_rand=(0,0), draw_rotate_rand=0):
     """
     Creates an image of a handwritten-style number.
 
