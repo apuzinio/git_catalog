@@ -10,11 +10,5 @@
         "handle": "run.py",
         "type": 0,
         "is_local": true
-    },
-    "datasets/Foo": {
-        "path": "datasets/Foo",
-        "handle": null,
-        "type": 2,
-        "is_local": true
     }
 }
