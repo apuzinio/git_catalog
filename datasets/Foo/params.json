@@ -1,8 +1,0 @@
-{
-    "font_name": "Chalkboard",
-    "font_size": 48,
-    "draw_offset_fixed_y": -10,
-    "draw_offset_rand_x": 5,
-    "draw_offset_rand_y": 5,
-    "draw_rotate_rand": 30
-}
