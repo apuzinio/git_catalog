@@ -10,5 +10,12 @@
         "handle": "run.py",
         "type": 0,
         "is_local": true
+    },
+    "datasets/ScribbleTest": {
+        "path": "datasets/ScribbleTest",
+        "handle": null,
+        "type": 2,
+        "catalog_id": "datasets/ScribbleTest",
+        "is_local": true
     }
 }
