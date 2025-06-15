@@ -15,7 +15,26 @@
         "path": "datasets/ScribbleTest",
         "handle": null,
         "type": 2,
-        "catalog_id": "datasets/ScribbleTest",
-        "is_local": true
+        "is_local": true,
+        "params": {
+            "font_name": "Arial",
+            "font_size": 48,
+            "draw_offset_fixed_y": -10,
+            "draw_offset_rand_x": 5,
+            "draw_offset_rand_y": 5,
+            "draw_rotate_rand": 30
+        },
+        "manifest": [
+            {
+                "catalog_key": "git_github.com/apuzinio/git_catalog.git",
+                "catalog_id": "engines/python",
+                "version": "f6b97c69d8d22f8431550646f20b35e71440b729"
+            },
+            {
+                "catalog_key": "git_github.com/apuzinio/git_catalog.git",
+                "catalog_id": "scenarios/ScribbleNumber",
+                "version": "f6b97c69d8d22f8431550646f20b35e71440b729"
+            }
+        ]
     }
 }
