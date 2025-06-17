@@ -15,7 +15,6 @@
         "path": "scenarios/fiftyone_dataset_from_falcon_vision",
         "handle": "fiftyone_dataset_from_falcon_vision.py",
         "type": 1,
-        "catalog_id": "scenarios/fiftyone_dataset_from_falcon_vision",
         "is_local": true
     }
 }

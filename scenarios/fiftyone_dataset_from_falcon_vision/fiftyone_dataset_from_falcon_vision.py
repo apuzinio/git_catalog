@@ -1,25 +1,27 @@
 import os
 import sys
+import argparse
+import time
 import fiftyone as fo
 
-def fiftyone_dataset_from_falcon_vision(dataset_dir: str, data_grp: str):
+def fiftyone_dataset_from_falcon_vision(data_grp='train'):
     # get the date stamped subdir in the dataset with images
-    dataset_subdir = [item.name for item in os.scandir(dataset_dir) if item.is_dir()]
+    dataset_subdir = [item.name for item in os.scandir('.') if item.is_dir()]
     if len(dataset_subdir) < 1:
         print(f"ERROR: fiftyone_load_dataset: no data subdir found in dataset dir ({dataset_dir})")
         return None
-    images_dir = os.path.join(dataset_dir, dataset_subdir[0], data_grp, 'images')
+    images_dir = os.path.join(dataset_subdir[0], data_grp, 'images')
     if not os.path.isdir(images_dir):
         print(f"ERROR: fiftyone_load_dataset: images_dir ({images_dir}) not found)")
         return None        
     print(f"images_dir: {images_dir}")
-    labels_dir = os.path.join(dataset_dir, dataset_subdir[0], data_grp, 'labels')
+    labels_dir = os.path.join(dataset_subdir[0], data_grp, 'labels')
     if not os.path.isdir(labels_dir):
         print(f"ERROR: fiftyone_load_dataset: labels_dir ({labels_dir}) not found)")
         return None            
     print(f"labels_dir: {labels_dir}")
     # read classes
-    classes_file = os.path.join(dataset_dir, dataset_subdir[0], 'classes.txt')
+    classes_file = os.path.join(dataset_subdir[0], 'classes.txt')
     print(f"classes_file: {classes_file}")
     classes = ["unknown"]
     try:
@@ -54,6 +56,22 @@ def fiftyone_dataset_from_falcon_vision(dataset_dir: str, data_grp: str):
         except:
             print(f"ERROR: fiftyone_load_dataset: Unable to read bbox label from ({label_file})")
         samples.append(sample)
-    dataset = fo.Dataset(os.path.basename(dataset_dir))
+        sys.stdout.flush()
+    try:
+        dataset = fo.load_dataset('falcon_vision')
+        dataset.delete()
+        print(f"removed old falcon_vision dataset")
+    except:
+        print(f"new falcon_vision dataset")
+    dataset = fo.Dataset('falcon_vision')
     dataset.add_samples(samples)
     session = fo.launch_app(dataset)
+    session.wait()
+    
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="python fiftyone_dataset_from_falcon_vision.py --data_grp=train")
+    parser.add_argument('--data_grp', type=str, default='train', help="data group train/val")
+    args = parser.parse_args()
+    print(f"args: {args}")
+    sys.stdout.flush()
+    fiftyone_dataset_from_falcon_vision(data_grp=args.data_grp)
