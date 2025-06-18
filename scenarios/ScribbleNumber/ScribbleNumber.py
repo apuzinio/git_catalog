@@ -2,7 +2,7 @@ import random
 import argparse
 from PIL import Image, ImageDraw, ImageFont
 
-def create_handwritten_number(number, image_size=(64, 64), font_name=None, font_size=20, draw_offset_fixed=(0,0), draw_offset_rand=(0,0), draw_rotate_rand=0):
+def create_handwritten_number(number, image_size=(64, 64), font_name=None, font_size=24, draw_offset_fixed=(0,0), draw_offset_rand=(0,0), draw_rotate_rand=0):
     """
     Creates an image of a handwritten-style number.
 
@@ -41,7 +41,7 @@ def create_handwritten_number(number, image_size=(64, 64), font_name=None, font_
     angle = random.randint(-draw_rotate_rand, draw_rotate_rand)
     rotated_image = image.rotate(angle, fillcolor="white")                  
     
-    return rotated_image
+    return (rotated_image, number)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="python ScribbleNumber.py --font_name=None --font_size=24 --draw_offset_fixed=(0,-10) --draw_offset_rand=(5,5) --draw_rotate_rand=20)")
@@ -54,12 +54,17 @@ if __name__ == "__main__":
     parser.add_argument('--draw_rotate_rand', type=int, default=0)
     args = parser.parse_args()
     print(args)
+    print("ScribbleNumber: labels will be stored in labels.txt")
+    label_fd = open('labels.txt', 'w')
     for i in range(10):
         print(f"ScribbleNumber: Working on handwritten_{i}.png...")
-        image = create_handwritten_number(random.randint(0, 9), 
-                                          font_name= args.font_name,
-                                          font_size=args.font_size,
-                                          draw_offset_fixed=(args.draw_offset_fixed_x,args.draw_offset_fixed_y),
-                                          draw_offset_rand=(args.draw_offset_rand_x,args.draw_offset_rand_y),
-                                          draw_rotate_rand=args.draw_rotate_rand)
+        (image, number) = create_handwritten_number(
+            random.randint(0, 9), 
+            font_name= args.font_name,
+            font_size=args.font_size,
+            draw_offset_fixed=(args.draw_offset_fixed_x,args.draw_offset_fixed_y),
+            draw_offset_rand=(args.draw_offset_rand_x,args.draw_offset_rand_y),
+            draw_rotate_rand=args.draw_rotate_rand)
         image.save(f"handwritten_{i}.png")
+        label_fd.write(f"{number}\n")
+    label_fd.close()
