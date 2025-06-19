@@ -3,26 +3,24 @@
         "catalog_id": "engines/python",
         "path": "engines/python",
         "handle": "run.py",
-        "type": 0,
+        "type": 0
     },
     "scenarios/ScribbleNumber": {
         "catalog_id": "scenarios/ScribbleNumber",
         "path": "scenarios/ScribbleNumber",
         "handle": "ScribbleNumber.py",
-        "type": 1,
+        "type": 1
     },
     "engines/falcon": {
         "catalog_id": "engines/falcon",
         "path": "engines/falcon",
         "handle": "run.py",
-        "type": 0,
-        "is_local": true
+        "type": 0
     },
     "scenarios/fiftyone_dataset_from_falcon_vision": {
         "catalog_id": "scenarios/fiftyone_dataset_from_falcon_vision",
         "path": "scenarios/fiftyone_dataset_from_falcon_vision",
         "handle": "fiftyone_dataset_from_falcon_vision.py",
-        "type": 1,
-        "is_local": true
+        "type": 1
     }
 }
