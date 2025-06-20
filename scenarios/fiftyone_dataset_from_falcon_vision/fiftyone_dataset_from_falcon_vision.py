@@ -67,7 +67,7 @@ def fiftyone_dataset_from_falcon_vision(data_grp='train'):
     dataset = fo.Dataset('falcon_vision')
     dataset.add_samples(samples)
     try:
-        dataset_or_view.export(export_dir='./voxel51',
+        dataset.export(export_dir='./voxel51',
         dataset_type=fo.types.COCODetectionDataset,
         label_field="bbox",
         export_media="move")
