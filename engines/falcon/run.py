@@ -8,6 +8,7 @@ import subprocess
 import shutil
 import time
 import threading
+import platform
 
 end_logging = False
 
@@ -76,7 +77,11 @@ except json.JSONDecodeError:
 except Exception as e:
     print(f"ERROR: run.py: input json ({params_json}) unknown error in loading data: {e}")
     sys.exit(1)
-log_dir = os.path.join(str(os.getenv('homedrive') + os.getenv('homepath')), 'AppData\\Local\\Falcon\\Logs')
+current_platform = platform.platform()
+if "Windows" in current_platform:
+    log_dir = os.path.join(str(os.getenv('homedrive') + os.getenv('homepath')), 'AppData\\Local\\Falcon\\Logs')
+else:
+    log_dir = os.path.join(str(os.getenv('HOME')), '.config/Epic/Falcon/Logs')
 print(f"params_json: {params_json}")
 print(f"log_dir: {log_dir}")
 shutil.copy(params_json, log_dir)
