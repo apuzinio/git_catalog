@@ -59,10 +59,12 @@ def fiftyone_dataset_from_falcon_vision(data_grp='train'):
         samples.append(sample)
         sys.stdout.flush()
         try:
-            with open('voxel51_samples.json', 'w') as fd:
-                json.dump(samples, fd, indent=4)
-        except Exceptions as e:
-            print(f"ERROR: fiftyone_dataset_from_falcon_vision: Unable to write voxel51_samples.json, unknown error: {e}")
+            dataset_or_view.export(export_dir='./voxel51',
+            dataset_type=fo.types.COCODetectionDataset,
+            label_field="bbox",
+            export_media="move")
+        except Exception as e:
+            print(f"ERROR: fiftyone_dataset_from_falcon_vision: Unable to export voxel51 dataset, unknown error: {e}")
     #try:
     #    dataset = fo.load_dataset('falcon_vision')
     #    dataset.delete()
