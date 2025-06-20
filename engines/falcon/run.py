@@ -93,6 +93,9 @@ output_dir = sys.argv[3]
 if not os.path.isdir(output_dir):
     print(f"ERROR: run.py: could not find output dir ({output_dir})")
     sys.exit(1)
+# dir with Falcon binary, needs to be cwd for linux
+cmd_dir = os.path.dirname(shutil.which('Falcon.sh'))
+print(f"cmd_dir: {cmd_dir}")
 playerrole = 'Fixedbase_BP_C_0'
 if 'playerrole' in params_dict:
     playerrole = params_dict['playerrole']
@@ -118,7 +121,7 @@ try:
     falcon_env = os.environ.copy()
     falcon_env['output_dir'] = output_dir
     falcon_env['log_dir'] = log_dir
-    result = subprocess.run(command, cwd=output_dir, text=True, env=falcon_env)
+    result = subprocess.run(command, cwd=cmd_dir, text=True, env=falcon_env)
     sys.stdout.flush()
     sys.stderr.flush()
 except subprocess.CalledProcessError as e:
