@@ -78,10 +78,13 @@ except Exception as e:
     print(f"ERROR: run.py: input json ({params_json}) unknown error in loading data: {e}")
     sys.exit(1)
 current_platform = platform.platform()
+dusim_cmd = None
 if "Windows" in current_platform:
     log_dir = os.path.join(str(os.getenv('homedrive') + os.getenv('homepath')), 'AppData\\Local\\Falcon\\Logs')
+    dusim_cmd = 'DuSim.exe'
 else:
     log_dir = os.path.join(str(os.getenv('HOME')), '.config/Epic/Falcon/Logs')
+    dusim_cmd = 'DuSim.sh'
 print(f"params_json: {params_json}")
 print(f"log_dir: {log_dir}")
 shutil.copy(params_json, log_dir)
@@ -98,7 +101,7 @@ if not token:
     print(f"ERROR: run.py: token must be defined")
     sys.exit(1)
 # run command
-command = ['DuSim',  
+command = [dusim_cmd,  
            str('-scenario=' + scenario_file),
            str('-playerrole=' + playerrole),   
            str('-token=' + token),
