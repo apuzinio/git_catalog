@@ -58,21 +58,21 @@ def fiftyone_dataset_from_falcon_vision(data_grp='train'):
             print(f"ERROR: fiftyone_load_dataset: Unable to read bbox label from ({label_file})")
         samples.append(sample)
         sys.stdout.flush()
-        try:
-            dataset_or_view.export(export_dir='./voxel51',
-            dataset_type=fo.types.COCODetectionDataset,
-            label_field="bbox",
-            export_media="move")
-        except Exception as e:
-            print(f"ERROR: fiftyone_dataset_from_falcon_vision: Unable to export voxel51 dataset, unknown error: {e}")
-    #try:
-    #    dataset = fo.load_dataset('falcon_vision')
-    #    dataset.delete()
-    #    print(f"removed old falcon_vision dataset")
-    #except:
-    #    print(f"new falcon_vision dataset")
-    #dataset = fo.Dataset('falcon_vision')
-    #dataset.add_samples(samples)
+    try:
+        dataset = fo.load_dataset('falcon_vision')
+        dataset.delete()
+        print(f"removed old falcon_vision dataset")
+    except:
+        print(f"new falcon_vision dataset")
+    dataset = fo.Dataset('falcon_vision')
+    dataset.add_samples(samples)
+    try:
+        dataset_or_view.export(export_dir='./voxel51',
+        dataset_type=fo.types.COCODetectionDataset,
+        label_field="bbox",
+        export_media="move")
+    except Exception as e:
+        print(f"ERROR: fiftyone_dataset_from_falcon_vision: Unable to export voxel51 dataset, unknown error: {e}")            
     #session = fo.launch_app(dataset)
     #session.wait()
     
