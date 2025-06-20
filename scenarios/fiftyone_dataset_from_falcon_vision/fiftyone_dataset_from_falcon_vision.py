@@ -2,6 +2,7 @@ import os
 import sys
 import argparse
 import time
+import json
 import fiftyone as fo
 
 def fiftyone_dataset_from_falcon_vision(data_grp='train'):
@@ -57,16 +58,21 @@ def fiftyone_dataset_from_falcon_vision(data_grp='train'):
             print(f"ERROR: fiftyone_load_dataset: Unable to read bbox label from ({label_file})")
         samples.append(sample)
         sys.stdout.flush()
-    try:
-        dataset = fo.load_dataset('falcon_vision')
-        dataset.delete()
-        print(f"removed old falcon_vision dataset")
-    except:
-        print(f"new falcon_vision dataset")
-    dataset = fo.Dataset('falcon_vision')
-    dataset.add_samples(samples)
-    session = fo.launch_app(dataset)
-    session.wait()
+        try:
+            with open('voxel51_samples.json', 'w') as fd:
+                json.dump(samples, fd, indent=4)
+        except Exceptions as e:
+            print(f"ERROR: fiftyone_dataset_from_falcon_vision: Unable to write voxel51_samples.json, unknown error: {e}")
+    #try:
+    #    dataset = fo.load_dataset('falcon_vision')
+    #    dataset.delete()
+    #    print(f"removed old falcon_vision dataset")
+    #except:
+    #    print(f"new falcon_vision dataset")
+    #dataset = fo.Dataset('falcon_vision')
+    #dataset.add_samples(samples)
+    #session = fo.launch_app(dataset)
+    #session.wait()
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="python fiftyone_dataset_from_falcon_vision.py --data_grp=train")
