@@ -7,7 +7,11 @@ import subprocess
 
 # if no arguments provided, test if engine is supported on local system
 if len(sys.argv) == 1:
-    # Python engine is always supported since its required to run liveset itself
+    # Ensure Python version 3.8 or higher
+    if sys.version_info < (3, 8):
+        print(f"ERROR: run.py: Python version {sys.version} is incompatible, must be v3.8+")
+        sys.exit(1)
+    print(f"run.py: Python version {sys.version} is compatible with liveset")
     sys.exit(0)
 
 # check for correct number of arguments
