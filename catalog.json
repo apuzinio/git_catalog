@@ -10,5 +10,7 @@
         "path": "scenarios/ScribbleNumber",
         "handle": "ScribbleNumber.py",
         "type": 1
+    },
+    "test": {
     }
 }
