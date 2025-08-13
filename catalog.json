@@ -11,7 +11,11 @@
         "handle": "ScribbleNumber.py",
         "type": 1
     },
-    "test": {
-        "foo": "bar"
+    "engines/falcon": {
+        "path": "engines/falcon",
+        "handle": "run.py",
+        "type": 0,
+        "catalog_id": "engines/falcon",
+        "is_local": true
     }
 }
