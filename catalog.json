@@ -10,5 +10,12 @@
         "path": "scenarios/ScribbleNumber",
         "handle": "ScribbleNumber.py",
         "type": 1
+    },
+    "engines/falcon": {
+        "path": "engines/falcon",
+        "handle": "run.py",
+        "type": 0,
+        "catalog_id": "engines/falcon",
+        "is_local": true
     }
 }
