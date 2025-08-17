@@ -1,6 +1,5 @@
 {
     "engines/python": {
-        "catalog_id": "engines/python",
         "path": "engines/python",
         "handle": "run.py",
         "type": 0
