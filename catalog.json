@@ -16,5 +16,11 @@
         "handle": "fiftyone_dataset_from_falcon_vision.py",
         "type": 1,
         "catalog_id": "scenarios/fiftyone_dataset_from_falcon_vision"
+    },
+    "engines/falcon": {
+        "path": "engines/falcon",
+        "handle": "run.py",
+        "type": 0,
+        "catalog_id": "engines/falcon"
     }
 }
