@@ -10,5 +10,11 @@
         "path": "scenarios/ScribbleNumber",
         "handle": "ScribbleNumber.py",
         "type": 1
+    },
+    "scenarios/fiftyone_dataset_from_falcon_vision": {
+        "path": "scenarios/fiftyone_dataset_from_falcon_vision",
+        "handle": "fiftyone_dataset_from_falcon_vision.py",
+        "type": 1,
+        "catalog_id": "scenarios/fiftyone_dataset_from_falcon_vision"
     }
 }
