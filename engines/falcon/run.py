@@ -1,4 +1,8 @@
-# Currently only works on Windows
+# falcon/run.py requires env variables to be setup first:
+# Set Falcon cloud token:
+# export FALCON_CLOUD_TOKEN=<token>
+# On Linux, set Falcon dir:
+# export FALCON_DIR=<falconsim_dir>
 
 import os
 import sys
