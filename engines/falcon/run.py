@@ -88,7 +88,7 @@ if "Windows" in current_platform:
     dusim_cmd = 'DuSim.exe'
 else:
     log_dir = os.path.join(str(os.getenv('HOME')), '.config/Epic/Falcon/Logs')
-    dusim_cmd = 'Falcon.sh'
+    dusim_cmd = './Falcon.sh'
 print(f"scenario_file: {scenario_file}")
 print(f"params_json: {params_json}")
 print(f"log_dir: {log_dir}")
@@ -104,7 +104,6 @@ if "Linux" in current_platform:
     cmd_dir = os.getenv("FALCON_DIR")
     print(f"cd {cmd_dir}")
     os.chdir(cmd_dir)
-print(f"cmd_dir: {cmd_dir}")
 playerrole = 'Fixedbase_BP_C_0'
 if 'playerrole' in params_dict:
     playerrole = params_dict['playerrole']
