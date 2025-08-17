@@ -20,7 +20,6 @@
     "engines/falcon": {
         "path": "engines/falcon",
         "handle": "run.py",
-        "type": 0,
-        "catalog_id": "engines/falcon"
+        "type": 0
     }
 }
